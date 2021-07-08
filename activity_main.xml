@@ -28,6 +28,7 @@
                app:menu="@menu/bottom_navigation"/>
                
          </android.support.design.widget.AppBarLayout>
+       
 </RelativeLayout> 
            
            
