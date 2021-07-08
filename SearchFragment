@@ -26,6 +26,25 @@ public class SearchFragment extends Fragment {
         userAdapter= new UserAdapter(getContext(), mUsers);
         recyclerView.setAdapter(userAdapter;);
         
+        readUsers();
+        search_bar.addTextChangedListener(new TextWatcher(){
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2){
+            
+            }
+            
+            @Override
+            public void onTextChanged(CharSequence charSequence,int i, int i1, int i2){
+                searchUsers(charSequence.toString().toLowerCase());
+            }
+            
+            @Override
+            public void afterTextChanged(Editable editable){
+            
+            }
+            
+            
+        });
         return view;
     }
     
@@ -53,7 +72,35 @@ public class SearchFragment extends Fragment {
         });
     }
     
-    private 
+    private void readUsers(){
+    
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("User");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(search_bar.getText().toString().equals("")){
+                   mUsers.clear();
+                   for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                      User user = snapshot.getValue(User.class); 
+                      mUsers.add(user);
+                   }
+                   
+                   userAdapter.notifyDataSetChanged();
+                }
+            
+            }
+            
+            @Override
+            public void onCancelled(DatabaseError databaseError){
+            
+            }
+        
+        
+        });
+    
+    
+    
+    }
     
     
 }
