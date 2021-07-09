@@ -4,10 +4,35 @@ import...
 
 public class HomeFragment extends Fragment {
 
+    private RecyclerView recyclerView;
+    private PostAdapter postAdapter;
+    private List<Post> postLists;
+    
+    private List<String> followingList;
+
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container, 
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+                             
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        
+        recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager.linearLayoutManager= new LinearLayoutManager(getContext());
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManger(linearLayoutManager);
+        postLists = new ArrayList<>();
+        postAdapter = new PostAdapter(getContext(),postLists);
+        recyclerView.setAdapter(postAdapter); 
+        return view;
+    }
+    
+    private void readPosts(){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts);
+        
+        reference.addValueEventListener(new
+    
     }
 }
                                 
