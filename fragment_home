@@ -1,16 +1,58 @@
 
 <?xml version="1.0" encoding="utf-8"?> 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
        xmlns:tools="http://schemas.android.com/tools" 
        android:layout_width="match_parent" 
        android:layout_height="match_parent" 
        tools:context=".Fragment.HomeFragment">
        
-       
-       <TextView
+       <android.support.design.widget.AppBarLayout
            android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:text="Home" />
+           android:layout_height="wrap_content"
+           android:id="@+id/bar"
+           android:background="?android:attr/windowBackground">
+              
+              
+             <android.support.v7.widget.Toolbar
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:id="@+id/toolbar"
+                 android:background="?android:attr/windowBackground">
+             </android.support.v7.widget.Toolbar>
+              
+              
+              
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content">
+                    
+                 <ImageView
+                     android:layout_width="180dp"
+                     android:layout_height="35dp"
+                     android:layout_allignParentStart="true"
+                     android:layout_marginLeft= "-20dp"
+                     android:src="@drawable/logo"/>
+                 // go to res and add image asset inbox
+                    
+                    
+                  <ImageView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_marginRight="10dp"
+                      android:src="@drawable/ic_inbox"
+                      android:layout_allignParentEnd="true"/>
+                      
           
-          
-</FrameLayout>
+              </RelativeLayout>
+             
+            </android.support.v7.widget.Toolbar>
+              
+         </android.support.design.widget.AppBarLayout>
+
+         <android.support.v7.widget.RecyclerView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:id="@+id/recycler_view"/>
+       
+</RelativeLayout>
+       
